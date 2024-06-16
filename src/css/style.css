@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('/src/fonts/Raleway-Black.ttf') format('woff2');
+}
+
+@font-face {
+    font-family: 'Raleway-Light';
+    src: url('/src/fonts/Raleway-Light.ttf') format('woff2');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway-Light';
+    font-weight: 900;
+    color: rgb(255, 155, 6);
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.562);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1920px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav li {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    max-width: 1920px;
+}
+
+.order-menu {
+    width: 70%;
+    height: 2000px;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+.shopping-basket {
+    width: 30%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    padding: 20px;
+}
+
+footer {
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+}
