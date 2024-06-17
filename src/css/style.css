@@ -51,6 +51,12 @@ header {
     padding: 20px;
 }
 
+.order-head img {
+    height: 150px;
+    object-fit: cover;
+    width: 100%;
+}
+
 .shopping-basket {
     width: 30%;
     height: 100vh;
