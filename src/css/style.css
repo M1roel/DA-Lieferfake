@@ -62,6 +62,7 @@ button {
     height: 150px;
     object-fit: cover;
     width: 100%;
+    border-radius: 10px;
 }
 
 .order-element {
@@ -73,6 +74,7 @@ button {
     background-color: rgba(255, 204, 63, 0.1);
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.562);
     padding: 20px 10px;
+    border-radius: 10px;
 }
 
 .add-remove {
@@ -106,6 +108,7 @@ button {
     flex-direction: column;
     text-align: center;    
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.562);
+    border-radius: 10px;
 }
 
 .empty-cart h2 {
