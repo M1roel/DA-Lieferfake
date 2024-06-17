@@ -16,6 +16,9 @@ function generateMenu(menuType, menuPrice) {
     <div class='menu'>
         <h3 class='menu-type'>${menuType}</h3>
         <span class='menu-price'>${menuPrice}</span>
+        <div class="add-remove">
+            <button>+</button>
+            <button>-</button>
     </div>
     `;
 }
