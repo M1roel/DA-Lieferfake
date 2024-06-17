@@ -98,6 +98,20 @@ button {
     padding: 20px;
 }
 
+.empty-cart {
+    height: 300px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;    
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.562);
+}
+
+.empty-cart h2 {
+    margin: 20px 0px;
+}
+
 footer {
     height: 200px;
     background-color: rgb(255, 255, 255);
