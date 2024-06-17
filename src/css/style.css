@@ -58,8 +58,8 @@ header {
 }
 
 .order-element {
-    height: 100px;
-    
+    margin-top: 50px;
+    height: 150px;
 }
 
 .shopping-basket {
