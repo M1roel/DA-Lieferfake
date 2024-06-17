@@ -1,6 +1,6 @@
 let data = [
     {
-        pizza: 'Pizza Margaritha',
+        type: 'Pizza Margaritha',
         price: 8.99,
         amount: 1,
         ingredients: [

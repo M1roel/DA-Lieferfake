@@ -57,6 +57,11 @@ header {
     width: 100%;
 }
 
+.order-element {
+    height: 100px;
+    
+}
+
 .shopping-basket {
     width: 30%;
     height: 100vh;
