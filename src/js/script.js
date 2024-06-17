@@ -13,8 +13,10 @@ function show() {
 
 function generateMenu(menuType, menuPrice) {
   return `
-    <h3 class='menu-type'>${menuType}</h3>
-    <span class='menu-price'>${menuPrice}</span>
+    <div class='menu'>
+        <h3 class='menu-type'>${menuType}</h3>
+        <span class='menu-price'>${menuPrice}</span>
+    </div>
     `;
 }
 
