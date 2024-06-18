@@ -51,7 +51,6 @@ button {
 
 .main-container {
     display: flex;
-    max-width: 1920px;
     margin-left: auto;
 }
 
@@ -121,13 +120,13 @@ button {
 }
 
 .order-hidden {
-    z-index: 20;    
-    position: absolute;
-    top: 200px;
-    left: 400px;
-    background-color: rgba(0, 0, 0, 0.7);
-    height: 600px;
-    width: 600px;
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
