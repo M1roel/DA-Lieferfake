@@ -77,18 +77,18 @@ button {
     border-radius: 10px;
 }
 
-.add-remove {
+.add {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-end;    
+    padding-right: 10px;
 }
 
-.add-remove button {
+.add button {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    margin-left: 5px;
 }
 
 .shopping-basket {
@@ -109,6 +109,8 @@ button {
     text-align: center;    
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.562);
     border-radius: 10px;
+    position: sticky;
+    top: 20px;
 }
 
 .empty-cart h2 {
