@@ -20,15 +20,13 @@ function generateMenu(menuType, menuPrice, menuDiscription, menuImg, ingredients
         <h3 class='menu-type'>${menuType}</h3>
         <span class='menu-price'>${menuPrice}€</span>
         <div class="add">
-            <button onclick='showOrder("${menuType}", ${menuPrice}, "${menuDiscription}", "${menuImg}", ${JSON.stringify(ingredients)})'>+</button>
+            <button onclick='displayOrder("${menuType}", ${menuPrice}, "${menuDiscription}", "${menuImg}", ${JSON.stringify(ingredients)})'>+</button>
         </div>
     </div>
     `;
 }
 
-function showOrder(menuType, menuPrice, menuDiscription, menuImg, ingredients) {
-    let showOrderElement = document.getElementById('orderHidden');
-    showOrderElement.classList.remove('d-none');
+function generateIngredientsHtml(ingredients) {
     let ingredientsHtml = '';
 
     ingredients.forEach((ingredient, index) => {
@@ -39,6 +37,14 @@ function showOrder(menuType, menuPrice, menuDiscription, menuImg, ingredients) {
             </div>
         `;
     });
+
+    return ingredientsHtml;
+}
+
+function displayOrder(menuType, menuPrice, menuDiscription, menuImg, ingredients) {
+    let showOrderElement = document.getElementById('orderHidden');
+    showOrderElement.classList.remove('d-none');
+    let ingredientsHtml = generateIngredientsHtml(ingredients);
 
     showOrderElement.innerHTML = `
     <div class="order">
