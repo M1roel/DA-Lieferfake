@@ -29,6 +29,10 @@ button {
     cursor: pointer;
 }
 
+.d-none {
+    display: none;
+}
+
 .header-inner {
     display: flex;
     justify-content: space-between;
@@ -115,6 +119,18 @@ button {
 
 .empty-cart h2 {
     margin: 20px 0px;
+}
+
+.order-hidden {
+    z-index: 20;    
+    position: absolute;
+    top: 200px;
+    left: 400px;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 600px;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 footer {

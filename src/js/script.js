@@ -7,19 +7,29 @@ function show() {
   for (let i = 0; i < menues.length; i++) {
     const menuType = menues[i].type;
     const menuPrice = menues[i].price;
-    orderElement.innerHTML += generateMenu(menuType, menuPrice);
+    orderElement.innerHTML += generateMenu(menuType, menuPrice, i);
   }
 }
 
-function generateMenu(menuType, menuPrice) {
+function generateMenu(menuType, menuPrice, i) {
   return `
     <div class='menu'>
         <h3 class='menu-type'>${menuType}</h3>
         <span class='menu-price'>${menuPrice}</span>
         <div class="add">
-            <button>+</button>
+            <button onclick='showOrder(${i})'>+</button>
+        </div>
     </div>
     `;
+}
+
+function showOrder(i) {
+  let showOrderElement = document.getElementById('orderHidden');
+  if (!showOrderElement) {
+    console.error("Element mit ID 'orderHidden' nicht gefunden.");
+    return;
+  }
+  showOrderElement.classList.remove('d-none');
 }
 
 show();
