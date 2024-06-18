@@ -36,7 +36,6 @@ button {
 .header-inner {
     display: flex;
     justify-content: space-between;
-    max-width: 1920px;
 }
 
 .nav {
@@ -53,13 +52,13 @@ button {
 .main-container {
     display: flex;
     max-width: 1920px;
+    margin-left: auto;
 }
 
 .order-menu {
     width: 70%;
     height: 2000px;
-    background-color: rgba(0, 0, 0, 0.05);
-    padding: 20px;
+    padding: 20px 150px ;
 }
 
 .order-head img {
