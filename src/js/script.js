@@ -30,12 +30,18 @@ function showOrder(menuType, menuPrice, menuDiscription) {
   showOrderElement.innerHTML = `
     <div class="order">
       <div class="order-head">
+        <button onclick='closeOrder()'>X</button>
         <h3 class='menu-type'>${menuType}</h3>
         <span class="order-discription">"${menuDiscription}"</span>
         <span class='menu-price'>${menuPrice}€</span>
       </div>
     </div>
   `;
+}
+
+function closeOrder() {
+  let showOrderElement = document.getElementById('orderHidden');
+  showOrderElement.classList.add('d-none');
 }
 
 show();
