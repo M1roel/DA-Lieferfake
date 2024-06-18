@@ -150,6 +150,18 @@ button {
     flex-direction: column;
 }
 
+.order-head img {
+    width: 150px;
+}
+
+.order-btn,
+.order-menu-type,
+.order-discription,
+.order-menu-price,
+.order-head img {
+    margin-bottom: 20px;
+}
+
 footer {
     height: 200px;
     background-color: rgb(255, 255, 255);
