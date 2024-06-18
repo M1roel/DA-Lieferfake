@@ -25,10 +25,6 @@ function generateMenu(menuType, menuPrice, i) {
 
 function showOrder(i) {
   let showOrderElement = document.getElementById('orderHidden');
-  if (!showOrderElement) {
-    console.error("Element mit ID 'orderHidden' nicht gefunden.");
-    return;
-  }
   showOrderElement.classList.remove('d-none');
 }
 
