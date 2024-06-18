@@ -3,6 +3,7 @@ let data = [
         type: 'Pizza Margaritha',
         price: 8.99,
         amount: 1,
+        discription: 'Knuspriger Pizzateig mit Tomatensauce, Käse und Oregano',
         ingredients: [
             {extra_1: 'Käse', cost: 2},
             {extra_2: 'Knoblauch', cost: 0},
@@ -10,9 +11,10 @@ let data = [
         ]
     },
     {
-        type: 'Pizza Fungi',
+        type: 'Pizza Funghi',
         price: 11.99,
         amount: 1,
+        discription: 'mit frischen Champignons',
         ingredients: [
             {extra_1: 'Käse', cost: 2},
             {extra_2: 'Knoblauch', cost: 0},

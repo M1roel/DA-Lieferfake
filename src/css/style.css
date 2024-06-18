@@ -60,7 +60,7 @@ button {
     padding: 20px 150px ;
 }
 
-.order-head img {
+.order-menu-head img {
     height: 150px;
     object-fit: cover;
     width: 100%;
@@ -129,6 +129,25 @@ button {
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.order {
+    z-index: 21;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    height: auto;
+    border-radius: 10px;
+    background-color: white;
+    margin: 200px 200px;
+    padding: 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.order-head {
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
