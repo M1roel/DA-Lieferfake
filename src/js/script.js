@@ -20,7 +20,7 @@ function generateMenu(menuType, menuPrice, menuDiscription, menuImg, ingredients
         <h3 class='menu-type'>${menuType}</h3>
         <span class='menu-price'>${menuPrice}€</span>
         <div class="add">
-            <button onclick='displayOrder("${menuType}", ${menuPrice}, "${menuDiscription}", "${menuImg}", ${JSON.stringify(ingredients)})'>+</button>
+            <button onclick='displayOrder("${menuType}", ${menuPrice}, "${menuDiscription}", "${menuImg}", ${i})'>+</button>
         </div>
     </div>
     `;
@@ -41,10 +41,10 @@ function generateIngredientsHtml(ingredients) {
     return ingredientsHtml;
 }
 
-function displayOrder(menuType, menuPrice, menuDiscription, menuImg, ingredients) {
+function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
     let showOrderElement = document.getElementById('orderHidden');
     showOrderElement.classList.remove('d-none');
-    let ingredientsHtml = generateIngredientsHtml(ingredients);
+    let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients);
 
     showOrderElement.innerHTML = `
     <div class="order">
