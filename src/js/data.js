@@ -6,9 +6,9 @@ let data = [
         discription: 'Knuspriger Pizzateig mit Tomatensauce, Käse und Oregano',
         img: '/public/img/margaritha.png',
         ingredients: [
-            {extra_1: 'Käse', cost: 2},
-            {extra_2: 'Knoblauch', cost: 0},
-            {extra_3: 'Chilli', cost: 0}
+            {name: 'Käse', cost: 2},
+            {name: 'Knoblauch', cost: 0.5},
+            {name: 'Chilli', cost: 0.5}
         ]
     },
     {
@@ -18,9 +18,9 @@ let data = [
         discription: 'mit frischen Champignons',
         img: '/public/img/funghi.png',
         ingredients: [
-            {extra_1: 'Käse', cost: 2},
-            {extra_2: 'Knoblauch', cost: 0},
-            {extra_3: 'Chilli', cost: 0}
+            {name: 'Käse', cost: 2},
+            {name: 'Knoblauch', cost: 0.5},
+            {name: 'Chili', cost: 0.5}
         ]
     }
 ]
