@@ -45,6 +45,7 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
     let showOrderElement = document.getElementById('orderHidden');
     showOrderElement.classList.remove('d-none');
     let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients);
+    let amount = menues[index].amount;
 
     showOrderElement.innerHTML = `
     <div class="order">
@@ -57,9 +58,9 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
             ${ingredientsHtml}
             <div class="final-order">
                 <div class="amount-order">
-                    <button>+</button>
-                    ${menues.amount}
-                    <button>-</button>
+                    <button onclick='updateAmount(${index}, 1)'>+</button>
+                    <span id="amount_${index}">${amount}</span>
+                    <button onclick='updateAmount(${index}, -1)'>-</button>
                 </div>
                 <div class="order-btn">
                     /* Platzhalter Price Total */
@@ -68,6 +69,13 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
         </div>
     </div>
     `;
+}
+
+function updateAmount(index, delta) {
+    if (menues[index].amount + delta >= 1) {
+        menues[index].amount += delta;
+        document.getElementById(`amount_${index}`).innerText = menues[index].amount;
+    }
 }
 
 function closeOrder() {
