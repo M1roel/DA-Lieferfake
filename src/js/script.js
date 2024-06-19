@@ -64,7 +64,7 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
                     <button onclick='updateAmount(${index}, -1)'>-</button>
                 </div>
                 <div>
-                    <button class="total-order-btn" id="total_${index}">${totalPrice}€</button>
+                    <button class="total-order-btn" id="total_${index}" onclick='addToCartAndClose(menues[${index}], ${totalPrice})'>${totalPrice}€</button>
                 </div>
             </div>
         </div>
@@ -101,6 +101,11 @@ function calculateIngredientCosts(index) {
 
 function updateTotalPriceWithIngredients(index) {
     updateTotalPrice(index);
+}
+
+function addToCartAndClose(menuItem, totalPrice) {
+    addToCart(menuItem, totalPrice);
+    closeOrder();
 }
 
 function closeOrder() {
