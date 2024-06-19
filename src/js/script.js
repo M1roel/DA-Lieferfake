@@ -46,6 +46,7 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
     showOrderElement.classList.remove('d-none');
     let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients);
     let amount = menues[index].amount;
+    let totalPrice = (menuPrice * amount).toFixed(2);
 
     showOrderElement.innerHTML = `
     <div class="order">
@@ -63,7 +64,7 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
                     <button onclick='updateAmount(${index}, -1)'>-</button>
                 </div>
                 <div>
-                    <button class="total-order-btn">TOTAL</button>
+                    <button class="total-order-btn" id="total_${index}">${totalPrice}€</button>
                 </div>
             </div>
         </div>
@@ -75,11 +76,13 @@ function updateAmount(index, delta) {
     if (menues[index].amount + delta >= 1) {
         menues[index].amount += delta;
         document.getElementById(`amount_${index}`).innerText = menues[index].amount;
+        updateTotalPrice(index);
     }
 }
 
-function totalOrder() {
-    
+function updateTotalPrice(index) {
+    let totalPrice = (menues[index].price * menues[index].amount).toFixed(2);
+    document.getElementById(`total_${index}`).innerText = `${totalPrice}€`;
 }
 
 function closeOrder() {
