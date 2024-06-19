@@ -62,8 +62,8 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
                     <span id="amount_${index}">${amount}</span>
                     <button onclick='updateAmount(${index}, -1)'>-</button>
                 </div>
-                <div class="order-btn">
-                    /* Platzhalter Price Total */
+                <div>
+                    <button class="total-order-btn">TOTAL</button>
                 </div>
             </div>
         </div>
@@ -76,6 +76,10 @@ function updateAmount(index, delta) {
         menues[index].amount += delta;
         document.getElementById(`amount_${index}`).innerText = menues[index].amount;
     }
+}
+
+function totalOrder() {
+    
 }
 
 function closeOrder() {

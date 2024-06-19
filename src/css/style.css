@@ -170,6 +170,14 @@ button {
     margin-top: 20px;
 }
 
+.total-order-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px !important;
+    border-radius: 5% !important;
+}
+
 footer {
     height: 200px;
     background-color: rgb(255, 255, 255);
