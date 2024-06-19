@@ -89,10 +89,11 @@ function updateTotalPrice(index) {
 
 function calculateIngredientCosts(index) {
     let ingredientCosts = 0;
+    const amount = menues[index].amount;
     const checkboxes = document.querySelectorAll(`#orderHidden .ingredient input[type="checkbox"]`);
     checkboxes.forEach(checkbox => {
         if (checkbox.checked && checkbox.id.startsWith(`extra_${index}_`)) {
-            ingredientCosts += parseFloat(checkbox.value);
+            ingredientCosts += parseFloat(checkbox.value) * amount;
         }
     });
     return ingredientCosts;
