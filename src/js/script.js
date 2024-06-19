@@ -26,14 +26,14 @@ function generateMenu(menuType, menuPrice, menuDiscription, menuImg, ingredients
     `;
 }
 
-function generateIngredientsHtml(ingredients) {
+function generateIngredientsHtml(ingredients, menuIndex) {
     let ingredientsHtml = '';
 
     ingredients.forEach((ingredient, index) => {
         ingredientsHtml += `
             <div class="ingredient">
-                <input type="checkbox" id="extra_${index}" name="${ingredient.name}" value="${ingredient.name}">
-                <label for="extra_${index}">${ingredient.name} (+${ingredient.cost.toFixed(2)}€)</label>
+                <input type="checkbox" id="extra_${menuIndex}_${index}" name="${ingredient.name}" value="${ingredient.cost}" onchange="updateTotalPriceWithIngredients(${menuIndex})">
+                <label for="extra_${menuIndex}_${index}">${ingredient.name} (+${ingredient.cost.toFixed(2)}€)</label>
             </div>
         `;
     });
@@ -44,7 +44,7 @@ function generateIngredientsHtml(ingredients) {
 function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
     let showOrderElement = document.getElementById('orderHidden');
     showOrderElement.classList.remove('d-none');
-    let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients);
+    let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients, index);
     let amount = menues[index].amount;
     let totalPrice = (menuPrice * amount).toFixed(2);
 
@@ -82,7 +82,24 @@ function updateAmount(index, delta) {
 
 function updateTotalPrice(index) {
     let totalPrice = (menues[index].price * menues[index].amount).toFixed(2);
-    document.getElementById(`total_${index}`).innerText = `${totalPrice}€`;
+    let ingredientCosts = calculateIngredientCosts(index);
+    let finalPrice = (parseFloat(totalPrice) + ingredientCosts).toFixed(2);
+    document.getElementById(`total_${index}`).innerText = `${finalPrice}€`;
+}
+
+function calculateIngredientCosts(index) {
+    let ingredientCosts = 0;
+    const checkboxes = document.querySelectorAll(`#orderHidden .ingredient input[type="checkbox"]`);
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked && checkbox.id.startsWith(`extra_${index}_`)) {
+            ingredientCosts += parseFloat(checkbox.value);
+        }
+    });
+    return ingredientCosts;
+}
+
+function updateTotalPriceWithIngredients(index) {
+    updateTotalPrice(index);
 }
 
 function closeOrder() {
