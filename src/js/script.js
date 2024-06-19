@@ -33,7 +33,7 @@ function generateIngredientsHtml(ingredients) {
         ingredientsHtml += `
             <div class="ingredient">
                 <input type="checkbox" id="extra_${index}" name="${ingredient.name}" value="${ingredient.name}">
-                <label for="extra_${index}">${ingredient.name} (+${ingredient.cost}€)</label>
+                <label for="extra_${index}">${ingredient.name} (+${ingredient.cost.toFixed(2)}€)</label>
             </div>
         `;
     });
@@ -55,6 +55,16 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
             <span class="order-discription">${menuDiscription}</span>
             <span class='order-menu-price'>${menuPrice}€</span>
             ${ingredientsHtml}
+            <div class="final-order">
+                <div class="amount-order">
+                    <button>+</button>
+                    ${menues.amount}
+                    <button>-</button>
+                </div>
+                <div class="order-btn">
+                    /* Platzhalter Price Total */
+                </div>
+            </div>
         </div>
     </div>
     `;

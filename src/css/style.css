@@ -162,6 +162,14 @@ button {
     margin-bottom: 20px;
 }
 
+.final-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
 footer {
     height: 200px;
     background-color: rgb(255, 255, 255);
