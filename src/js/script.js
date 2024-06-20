@@ -1,5 +1,7 @@
 let menues = data;
 
+show();
+
 function show() {
   let orderElement = document.getElementById("orderElement");
   orderElement.innerHTML = "";
@@ -10,25 +12,11 @@ function show() {
     const menuDiscription = menues[i].discription;
     const menuImg = menues[i].img;
     const ingredients = menues[i].ingredients;
-    orderElement.innerHTML += generateMenu(
-      menuType,
-      menuPrice,
-      menuDiscription,
-      menuImg,
-      ingredients,
-      i
-    );
+    orderElement.innerHTML += generateMenu(menuType, menuPrice, menuDiscription, menuImg, ingredients, i);
   }
 }
 
-function generateMenu(
-  menuType,
-  menuPrice,
-  menuDiscription,
-  menuImg,
-  ingredients,
-  i
-) {
+function generateMenu(menuType, menuPrice, menuDiscription, menuImg, ingredients, i) {
   return `
     <div class='menu'>
         <h3 class='menu-type'>${menuType}</h3>
@@ -64,10 +52,7 @@ function generateIngredientsHtml(ingredients, menuIndex) {
 function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
   let showOrderElement = document.getElementById("orderHidden");
   showOrderElement.classList.remove("d-none");
-  let ingredientsHtml = generateIngredientsHtml(
-    menues[index].ingredients,
-    index
-  );
+  let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients, index);
   let amount = menues[index].amount;
   let totalPrice = (menuPrice * amount).toFixed(2);
 
@@ -142,5 +127,3 @@ function closeOrder() {
   let showOrderElement = document.getElementById("orderHidden");
   showOrderElement.classList.add("d-none");
 }
-
-show();
