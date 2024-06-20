@@ -50,8 +50,8 @@ function generateIngredientsHtml(ingredients, menuIndex) {
 }
 
 function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
-  let showOrderElement = document.getElementById("orderHidden");
-  showOrderElement.classList.remove("d-none");
+  let showOrderElement = document.getElementById('orderHidden');
+  showOrderElement.classList.remove('d-none');
   let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients, index);
   let amount = menues[index].amount;
   let totalPrice = (menuPrice * amount).toFixed(2);
@@ -67,9 +67,9 @@ function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
           ${ingredientsHtml}
           <div class="final-order">
               <div class="amount-order">
-              <button onclick='updateAmount(${index}, -1)'>-</button>
-                  <span id="amount_${index}">${amount}</span>
                   <button onclick='updateAmount(${index}, 1)'>+</button>
+                  <span id="amount_${index}">${amount}</span>
+                  <button onclick='updateAmount(${index}, -1)'>-</button>
               </div>
               <div>
                   <button class="total-order-btn" id="total_${index}" onclick='addToCartAndClose(menues[${index}], getCurrentTotalPrice(${index}))'>${totalPrice}€</button>
