@@ -42,35 +42,36 @@ function generateIngredientsHtml(ingredients, menuIndex) {
 }
 
 function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
-    let showOrderElement = document.getElementById('orderHidden');
-    showOrderElement.classList.remove('d-none');
-    let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients, index);
-    let amount = menues[index].amount;
-    let totalPrice = (menuPrice * amount).toFixed(2);
+  let showOrderElement = document.getElementById('orderHidden');
+  showOrderElement.classList.remove('d-none');
+  let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients, index);
+  let amount = menues[index].amount;
+  let totalPrice = (menuPrice * amount).toFixed(2);
 
-    showOrderElement.innerHTML = `
-    <div class="order">
-        <div class="order-head">
-            <button class="order-btn" onclick='closeOrder()'>X</button>
-            <h3 class='order-menu-type'>${menuType}</h3>
-            <img src="${menuImg}" alt="${menuType}">
-            <span class="order-discription">${menuDiscription}</span>
-            <span class='order-menu-price'>${menuPrice}€</span>
-            ${ingredientsHtml}
-            <div class="final-order">
-                <div class="amount-order">
-                    <button onclick='updateAmount(${index}, 1)'>+</button>
-                    <span id="amount_${index}">${amount}</span>
-                    <button onclick='updateAmount(${index}, -1)'>-</button>
-                </div>
-                <div>
-                    <button class="total-order-btn" id="total_${index}" onclick='addToCartAndClose(menues[${index}], ${totalPrice})'>${totalPrice}€</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
+  showOrderElement.innerHTML = `
+  <div class="order">
+      <div class="order-head">
+          <button class="order-btn" onclick='closeOrder()'>X</button>
+          <h3 class='order-menu-type'>${menuType}</h3>
+          <img src="${menuImg}" alt="${menuType}">
+          <span class="order-discription">${menuDiscription}</span>
+          <span class='order-menu-price'>${menuPrice}€</span>
+          ${ingredientsHtml}
+          <div class="final-order">
+              <div class="amount-order">
+                  <button onclick='updateAmount(${index}, 1)'>+</button>
+                  <span id="amount_${index}">${amount}</span>
+                  <button onclick='updateAmount(${index}, -1)'>-</button>
+              </div>
+              <div>
+                  <button class="total-order-btn" id="total_${index}" onclick='addToCartAndClose(menues[${index}], getCurrentTotalPrice(${index}))'>${totalPrice}€</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  `;
 }
+
 
 function updateAmount(index, delta) {
     if (menues[index].amount + delta >= 1) {
@@ -81,10 +82,15 @@ function updateAmount(index, delta) {
 }
 
 function updateTotalPrice(index) {
-    let totalPrice = (menues[index].price * menues[index].amount).toFixed(2);
-    let ingredientCosts = calculateIngredientCosts(index);
-    let finalPrice = (parseFloat(totalPrice) + ingredientCosts).toFixed(2);
-    document.getElementById(`total_${index}`).innerText = `${finalPrice}€`;
+  let totalPrice = (menues[index].price * menues[index].amount).toFixed(2);
+  let ingredientCosts = calculateIngredientCosts(index);
+  let finalPrice = (parseFloat(totalPrice) + ingredientCosts).toFixed(2);
+  document.getElementById(`total_${index}`).innerText = `${finalPrice}€`;
+  return finalPrice;
+}
+
+function getCurrentTotalPrice(index) {
+  return updateTotalPrice(index);
 }
 
 function calculateIngredientCosts(index) {
