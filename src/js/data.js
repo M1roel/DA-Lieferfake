@@ -1,7 +1,7 @@
 let data = [
     {
         type: 'Pizza Margaritha',
-        price: 8.99,
+        price: 8.95,
         amount: 1,
         discription: 'Knuspriger Pizzateig mit Tomatensauce, Käse und Oregano',
         img: '/public/img/margaritha.png',
@@ -13,7 +13,7 @@ let data = [
     },
     {
         type: 'Pizza Funghi',
-        price: 11.99,
+        price: 11.95,
         amount: 1,
         discription: 'mit frischen Champignons',
         img: '/public/img/funghi.png',
