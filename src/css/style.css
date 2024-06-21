@@ -93,44 +93,6 @@ button {
     font-size: 24px;
 }
 
-.shopping-basket {
-    width: 30%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    padding: 20px;
-}
-
-.empty-cart {
-    height: 300px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;    
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.562);
-    border-radius: 10px;
-    position: sticky;
-    top: 20px;
-}
-
-.empty-cart h2 {
-    margin: 20px 0px;
-}
-
-.order-hidden {
-    z-index: 20;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .order {
     z-index: 21;
     display: flex;
@@ -187,10 +149,52 @@ footer {
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.shopping-basket {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    padding: 20px;
+}
+
+.cart {
+    height: auto;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 10px;
+    position: sticky;
+    top: 20px;
+}
+
+.shopping-basket h2 {
+    margin: 20px 0px;
+}
+
+.order-hidden {
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .cart-item {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .cart-item img {
@@ -202,4 +206,13 @@ footer {
 .cart-item-details {
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.remove-item {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
 }

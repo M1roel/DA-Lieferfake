@@ -35,10 +35,11 @@ function updateCartDisplay() {
                     <h4>${item.type}</h4>
                     <p>${item.description}</p>
                     <p id="price_${index}">${parseFloat(item.price).toFixed(2)}€</p>
-                    <div class="amount-order">
+                    <div class="cart-amount">
                         <button onclick='updateCartAmount(${index}, -1)'>-</button>
                         <span id="cart_amount_${index}">${item.amount}</span>
                         <button onclick='updateCartAmount(${index}, 1)'>+</button>
+                        <button class="remove-item" onclick='removeFromCart(${index})'>X</button>
                     </div>
                 </div>
             `;
@@ -51,9 +52,15 @@ function updateCartDisplay() {
 function updateCartAmount(index, delta) {
     if (cart[index].amount + delta >= 1) {
         cart[index].amount += delta;
-        cart[index].price = (cart[index].price / (cart[index].amount - delta)) * cart[index].amount;
+        const basePrice = menues.find(item => item.type === cart[index].type).price;
+        cart[index].price = (basePrice * cart[index].amount).toFixed(2);
         updateCartDisplay();
     }
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartDisplay();
 }
 
 function displayCart() {
