@@ -29,6 +29,10 @@ button {
     cursor: pointer;
 }
 
+li {
+    list-style: none;
+}
+
 .d-none {
     display: none;
 }

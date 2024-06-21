@@ -1,12 +1,13 @@
 let cart = [];
 
-function addToCart(menuItem, totalPrice, amount) {
+function addToCart(menuItem, totalPrice, amount, selectedExtras) {
     cart.push({
         type: menuItem.type,
         price: parseFloat(totalPrice).toFixed(2),
         description: menuItem.discription,
         image: menuItem.img,
-        amount: amount
+        amount: amount,
+        extras: selectedExtras
     });
     console.log("Current cart:", cart);
     updateCartDisplay();
@@ -25,11 +26,11 @@ function updateCartDisplay() {
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p>Fülle deinen Warenkorb und füge leckere Gerichte aus der Speisekarte hinzu.</p>';
     } else {
-        let totalSum = 0;
-
         cart.forEach((item, index) => {
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
+
+            const extrasList = item.extras.map(extra => `<li>${extra.name}</li>`).join('');
 
             cartItem.innerHTML = `
                 <img src="${item.image}" alt="${item.type}">
@@ -37,6 +38,7 @@ function updateCartDisplay() {
                     <h4>${item.type}</h4>
                     <p>${item.description}</p>
                     <p id="price_${index}">${parseFloat(item.price).toFixed(2)}€</p>
+                    <ul>${extrasList}</ul>
                     <div class="cart-amount">
                         <button onclick='updateCartAmount(${index}, -1)'>-</button>
                         <span id="cart_amount_${index}">${item.amount}</span>
@@ -47,11 +49,13 @@ function updateCartDisplay() {
             `;
 
             cartItemsContainer.appendChild(cartItem);
-            totalSum += parseFloat(item.price);
         });
 
         const cartSumContainer = document.createElement('div');
         cartSumContainer.classList.add('cart-sum');
+
+        const totalSum = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+
         cartSumContainer.innerHTML = `
             <div>
                 <button class="total-order-btn" onclick="clearCart()">BEZAHLEN: (${totalSum.toFixed(2)}€)</button>
@@ -78,8 +82,4 @@ function removeFromCart(index) {
 function clearCart() {
     cart = [];
     updateCartDisplay();
-}
-
-function displayCart() {
-    console.log(cart);
 }

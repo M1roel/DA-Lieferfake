@@ -43,35 +43,53 @@ function generateIngredientsHtml(ingredients, menuIndex) {
     return ingredientsHtml;
 }
 
-function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
-    let showOrderElement = document.getElementById('orderHidden');
-    showOrderElement.classList.remove('d-none');
-    let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients, index);
-    let amount = menues[index].amount;
-    let totalPrice = (menuPrice * amount).toFixed(2);
+function getSelectedExtras(index) {
+  const checkboxes = document.querySelectorAll(`#orderHidden .ingredient input[type="checkbox"]`);
+  const selectedExtras = [];
+  checkboxes.forEach((checkbox) => {
+      if (checkbox.checked && checkbox.id.startsWith(`extra_${index}_`)) {
+          const extraName = checkbox.name;
+          const extraCost = parseFloat(checkbox.value);
+          selectedExtras.push({ name: extraName});
+      }
+  });
+  return selectedExtras;
+}
 
-    showOrderElement.innerHTML = `
-        <div class="order">
-            <div class="order-head">
-                <button class="order-btn" onclick='closeOrder()'>X</button>
-                <h3 class='order-menu-type'>${menuType}</h3>
-                <img src="${menuImg}" alt="${menuType}">
-                <span class="order-discription">${menuDiscription}</span>
-                <span class='order-menu-price'>${menuPrice}€</span>
-                ${ingredientsHtml}
-                <div class="final-order">
-                    <div class="amount-order">
-                        <button onclick='updateAmount(${index}, -1)'>-</button>
-                        <span id="amount_${index}">${amount}</span>
-                        <button onclick='updateAmount(${index}, 1)'>+</button>
-                    </div>
-                    <div>
-                        <button class="total-order-btn" id="total_${index}" onclick='addToCartAndClose(menues[${index}], getCurrentTotalPrice(${index}), ${amount})'>${totalPrice}€</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+function displayOrder(menuType, menuPrice, menuDiscription, menuImg, index) {
+  let showOrderElement = document.getElementById('orderHidden');
+  showOrderElement.classList.remove('d-none');
+  let ingredientsHtml = generateIngredientsHtml(menues[index].ingredients, index);
+  let amount = menues[index].amount;
+  let totalPrice = (menuPrice * amount).toFixed(2);
+
+  showOrderElement.innerHTML = `
+  <div class="order">
+      <div class="order-head">
+          <button class="order-btn" onclick='closeOrder()'>X</button>
+          <h3 class='order-menu-type'>${menuType}</h3>
+          <img src="${menuImg}" alt="${menuType}">
+          <span class="order-discription">${menuDiscription}</span>
+          <span class='order-menu-price'>${menuPrice}€</span>
+          ${ingredientsHtml}
+          <div class="final-order">
+              <div class="amount-order">
+                  <button onclick='updateAmount(${index}, 1)'>+</button>
+                  <span id="amount_${index}">${amount}</span>
+                  <button onclick='updateAmount(${index}, -1)'>-</button>
+              </div>
+              <div>
+                  <button class="total-order-btn" id="total_${index}" onclick='addToCartAndClose(menues[${index}], getCurrentTotalPrice(${index}), ${amount}, getSelectedExtras(${index}))'>${totalPrice}€</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  `;
+}
+
+function addToCartAndClose(menuItem, totalPrice, amount, selectedExtras) {
+  addToCart(menuItem, totalPrice, amount, selectedExtras);
+  closeOrder();
 }
 
 function updateAmount(index, delta) {
@@ -108,11 +126,6 @@ function calculateIngredientCosts(index) {
 
 function updateTotalPriceWithIngredients(index) {
     updateTotalPrice(index);
-}
-
-function addToCartAndClose(menuItem, totalPrice, amount) {
-    addToCart(menuItem, totalPrice, amount);
-    closeOrder();
 }
 
 function closeOrder() {
