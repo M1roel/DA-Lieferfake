@@ -206,7 +206,6 @@ footer {
 .cart-item-details {
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
 }
 
 .remove-item {
@@ -215,4 +214,8 @@ footer {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+.cart-amount {
+    margin-top: 10px;
 }
