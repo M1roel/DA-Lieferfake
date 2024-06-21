@@ -25,6 +25,8 @@ function updateCartDisplay() {
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p>Fülle deinen Warenkorb und füge leckere Gerichte aus der Speisekarte hinzu.</p>';
     } else {
+        let totalSum = 0;
+
         cart.forEach((item, index) => {
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
@@ -45,7 +47,17 @@ function updateCartDisplay() {
             `;
 
             cartItemsContainer.appendChild(cartItem);
+            totalSum += parseFloat(item.price);
         });
+
+        const cartSumContainer = document.createElement('div');
+        cartSumContainer.classList.add('cart-sum');
+        cartSumContainer.innerHTML = `
+            <div>
+                <button class="total-order-btn" onclick="clearCart()">BEZAHLEN: (${totalSum.toFixed(2)}€)</button>
+            </div>
+        `;
+        cartItemsContainer.appendChild(cartSumContainer);
     }
 }
 
@@ -60,6 +72,11 @@ function updateCartAmount(index, delta) {
 
 function removeFromCart(index) {
     cart.splice(index, 1);
+    updateCartDisplay();
+}
+
+function clearCart() {
+    cart = [];
     updateCartDisplay();
 }
 
