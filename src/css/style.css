@@ -61,7 +61,7 @@ li {
 .order-menu {
     width: 70%;
     height: 1000px;
-    padding: 20px 150px ;
+    padding: 20px 150px;
 }
 
 .order-menu-head img {
@@ -221,4 +221,41 @@ footer {
 
 .cart-amount {
     margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .order-menu {
+        padding: 20px 20px;
+    }
+}
+
+@media (max-width: 750px) {
+    .final-order {
+        flex-direction: column;        
+    }
+
+    .amount-order {
+        margin-bottom: 10px;
+    }
+
+    .order {
+        margin: 20px 20px;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 570px) {
+    .cart-item-details p {
+        font-size: 18px;
+    }
+
+    .total-order-btn {
+        width: auto !important;
+        padding: 10px 10px;
+    }
 }
